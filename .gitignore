@@ -1,52 +1,92 @@
-# Prerequisites
-*.d
+#include<stdio.h>
+#include <stdio.h>
+/*
+NAME       :A Chandu
 
-# Object files
-*.o
-*.ko
-*.obj
-*.elf
+DESCRIPTION:WAP to find the median of two unsorted arrays
+SAMPLE I/P :Enter the 'n' value for Array A: 5
+            Enter the 'n' value for Array B: 5
+			Enter the elements one by one for Array A: 3 2 8 5 4
+            Enter the elements one by one for Array B: 12 3 7 8 5
+SAMPLE O/P :Median of array1 : 4
+            Median of array2 : 7
+            Median of both arrays : 5.5    
+*/
+int main()
+{
+	int num1,num2; //declare the size of array1 & array2
+	printf("Enter the 'n' value for Array A: ");
+	scanf("%d",&num1); //read variable from the user
+	printf("Enter the 'n' value for Array B: ");
+	scanf("%d",&num2);
+	int arr1[num1],arr2[num2],i,k,l,j,temp,temp1;
+	int len1,len,len2,len3,len4,len5;
+	float a2am,avgme,len6;
+	printf("Enter the elements one by one for Array A: ");
+	for(i=0;i<num1;i++) 
+	{
+		scanf("%d",&arr1[i]); //read array1 from the user
+	}
+	printf("Enter the elements one by one for Array B: ");
+	for(j=0;j<num2;j++)
+	{
+		scanf("%d",&arr2[j]); //read array2 elements from the user
+	}
+	for(i=0;i<num1;i++)
+	{
+		for(j=i+1;j<num1;j++)
+		{
+			if(arr1[i]>arr1[j])  //sorting the array1
+			{
+				temp=arr1[i];
+ 				arr1[i]=arr1[j];
+				arr1[j]=temp;
+			}
+		}
+	}
+	for(k=0;k<num2;k++)
+	{
+		for(l=k+1;l<num2;l++)
+		{
+			if(arr2[k]>arr2[l])
+			{
+				temp1=arr2[k]; //sorting the array2
+				arr2[k]=arr2[l];
+				arr2[l]=temp1;
+			}
+		}
+	}
+	printf("\n");
+	if(num1%2==0)    //find median in array1 if index=even
+	{
+		len=arr1[num1/2 -1];
+		len1=arr1[num1/2];
+		avgme=(float)(len+len1)/2;
+		printf("Median of array1 : %g",avgme);
+	}
+	else       //if index =odd
+	{
+		len2=num1/2;
+		avgme=arr1[len2];
+		printf("Median of array1 : %g",avgme);
+	}
+	printf("\n");
+	if(num2%2==0) //if array2 index=even 
+	{
+		len3=arr2[num2/2 -1];
+		len4=arr2[num2/2];
+		a2am=(float)(len3+len4)/2;
+		printf("Median of array2 : %g",a2am); //median
+	}
+	else
+	{
+		len5=num2/2;
+		a2am=arr2[len5];
+		printf("Median of array2 : %g",a2am);
+	}
+	printf("\n");
+	len6=(float)(avgme+a2am)/2;
+	printf("Median of both arrays : %g",len6); //median of both arrays
 
-# Linker output
-*.ilk
-*.map
-*.exp
-
-# Precompiled Headers
-*.gch
-*.pch
-
-# Libraries
-*.lib
-*.a
-*.la
-*.lo
-
-# Shared objects (inc. Windows DLLs)
-*.dll
-*.so
-*.so.*
-*.dylib
-
-# Executables
-*.exe
-*.out
-*.app
-*.i*86
-*.x86_64
-*.hex
-
-# Debug files
-*.dSYM/
-*.su
-*.idb
-*.pdb
-
-# Kernel Module Compile Results
-*.mod*
-*.cmd
-.tmp_versions/
-modules.order
-Module.symvers
-Mkfile.old
-dkms.conf
+	return 0;
+}
